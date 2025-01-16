@@ -1,33 +1,33 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import About from "./Components/About/About";
-import Account from "./Components/Account/Account";
-import AllCategories from "./Components/AllCategories/AllCategories";
-import ForgotPassword from "./Components/Authantication/forgotpassword/ForgotPassword";
-import Login from "./Components/Authantication/Login/Login";
-import Register from "./Components/Authantication/register/Register";
-import Cart from "./Components/Cart/Cart";
-import OrderDetails from "./Components/checkout/confirmation/CheckoutConfirmation";
-import Home from "./Components/Home/Home";
-import OurServices from "./Components/Home/OurServices/OurServices";
-import ProductAdmin from "./Components/Layout/admin/ProductManagement";
-import Layout from "./Components/Layout/Layout";
-import Orders from "./Components/order/Order";
-import PageNotFound from "./Components/PageNotFound/PageNotFound";
-import PaymentStatus from "./Components/payment/esewa/EsewaSuccess";
-import PersonalInfo from "./Components/personalInfo/Profile";
-import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
-import ProductDetails from "./Components/Products/productDetails";
-import Products from "./Components/Products/Products";
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import Security from "./Components/Security/Security";
-import SupportCenter from "./Components/SupportCenter/SupportCenter";
-import TermsAndConditions from "./Components/TermsAndConditions/TermsAndConditions";
-import Testimonials from "./Components/Testimonials/Testimonials";
-import WhyUs from "./Components/WhyUs/WhyUs";
-import Wishlist from "./Components/wishlist/Wishlist";
-import AdminOrders from "./Components/Layout/admin/OrderManagement";
-import AdminDashboard from "./Components/Layout/admin/Admin";
-import UsersList from "./Components/Layout/admin/UserList";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import About from "./Components/About/About"
+import Account from "./Components/Account/Account"
+import AllCategories from "./Components/AllCategories/AllCategories"
+import ForgotPassword from "./Components/Authantication/forgotpassword/ForgotPassword"
+import Login from "./Components/Authantication/Login/Login"
+import Register from "./Components/Authantication/register/Register"
+import Cart from "./Components/Cart/Cart"
+import OrderDetails from "./Components/checkout/confirmation/CheckoutConfirmation"
+import Home from "./Components/Home/Home"
+import OurServices from "./Components/Home/OurServices/OurServices"
+import AdminDashboard from "./Components/Layout/admin/Admin"
+import AdminOrders from "./Components/Layout/admin/OrderManagement"
+import ProductAdmin from "./Components/Layout/admin/ProductManagement"
+import UsersList from "./Components/Layout/admin/UserList"
+import Layout from "./Components/Layout/Layout"
+import Orders from "./Components/order/Order"
+import PageNotFound from "./Components/PageNotFound/PageNotFound"
+import PaymentStatus from "./Components/payment/esewa/EsewaSuccess"
+import PersonalInfo from "./Components/personalInfo/Profile"
+import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy"
+import ProductDetails from "./Components/Products/productDetails"
+import Products from "./Components/Products/Products"
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute"
+import Security from "./Components/Security/Security"
+import SupportCenter from "./Components/SupportCenter/SupportCenter"
+import TermsAndConditions from "./Components/TermsAndConditions/TermsAndConditions"
+import Testimonials from "./Components/Testimonials/Testimonials"
+import WhyUs from "./Components/WhyUs/WhyUs"
+import Wishlist from "./Components/wishlist/Wishlist"
 
 function App() {
   return (
@@ -79,7 +79,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
