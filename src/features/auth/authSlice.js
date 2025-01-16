@@ -64,6 +64,7 @@ export const register = createAsyncThunk(
       if (response.success) {
         return response.data;
       }
+      
       return rejectWithValue(response.message);
     } catch (error) {
       return rejectWithValue(
