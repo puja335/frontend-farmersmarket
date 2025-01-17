@@ -1,15 +1,6 @@
-import React from "react";
-import animation from "../../assets/animations/aboutUsAnimation.gif";
-import {
-  Container,
-  Fade,
-  Button,
-  Card,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
-import { X } from "lucide-react";
+import { Card, Container, Fade } from "@mui/material"
+import React from "react"
+import animation from "../../assets/animations/aboutUsAnimation.gif"
 // const familyMembers = [
 //   {
 //     name: "John Doe",
@@ -44,33 +35,33 @@ import { X } from "lucide-react";
 // ];
 
 const About = () => {
-//   const [selectedMember, setSelectedMember] = useState(null);
+  //   const [selectedMember, setSelectedMember] = useState(null);
   // Scrolling Bug Fixed
-  window.scroll({ top: 0 });
+  window.scroll({ top: 0 })
   return (
-    <div className=" min-h-screen pt-20 px-2 flex items-center sm:px-6 lg:px-8">
+    <div className=' min-h-screen pt-20 px-2 flex items-center sm:px-6 lg:px-8'>
       <Fade in={true}>
         <Container>
-          <div className="max-w-7xl pb-5 container mx-auto ">
-            <div className="lg:grid md:grid-cols-2">
+          <div className='max-w-7xl pb-5 container mx-auto '>
+            <div className='lg:grid md:grid-cols-2'>
               {/* Animation */}
-              <div className="col flex order-last justify-center">
+              <div className='col flex order-last justify-center'>
                 <img
-                  className="xl:h-[30rem] lg:h-[28rem] md:h-[22rem] h-[17.5rem]"
+                  className='xl:h-[30rem] lg:h-[28rem] md:h-[22rem] h-[17.5rem]'
                   src={animation}
-                  alt="about_us"
+                  alt='about_us'
                 />
               </div>
-              <div className="xl:space-y-7 lg:space-y-5 md:space-y-7 space-y-5 sm:mt-0 sm:px-0">
+              <div className='xl:space-y-7 lg:space-y-5 md:space-y-7 space-y-5 sm:mt-0 sm:px-0'>
                 {/* Title */}
-                <span className="px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm">
+                <span className='px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm'>
                   About
                 </span>
-                <h2 className="xl:text-3xl md:text-3xl lg:text-2xl text-2xl font-semibold text-gray-800">
+                <h2 className='xl:text-3xl md:text-3xl lg:text-2xl text-2xl font-semibold text-gray-800'>
                   Welcome to Our Grocery App
                 </h2>
                 {/* Article */}
-                <p className=" text-justify xl:text-base lg:text-sm md:text-base text-sm text-gray-600">
+                <p className=' text-justify xl:text-base lg:text-sm md:text-base text-sm text-gray-600'>
                   At <strong>Grocery</strong>, we are committed to providing you
                   with the freshest and highest quality products for your
                   everyday needs. Our extensive range includes fresh vegetables,
@@ -100,7 +91,7 @@ const About = () => {
                   Start shopping now and make your everyday life healthier and
                   more convenient.
                 </p>
-                <div className="mt-6">
+                <div className='mt-6'>
                   {/* Button */}
                   {/* <button className="px-6 py-3 text-sm font-medium tracking-wider text-white bg-indigo-500 hover:bg-indigo-600 rounded-md">
                     Learn More
@@ -112,17 +103,17 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <section className="py-16">
-              <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                  <span className="px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm">
+            <section className='py-16'>
+              <div className='container mx-auto px-4'>
+                <div className='text-center mb-12'>
+                  <span className='px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm'>
                     Our Values
                   </span>
-                  <h2 className="text-3xl font-bold mt-4">
+                  <h2 className='text-3xl font-bold mt-4'>
                     Hear what people are saying about our Products & Services.
                   </h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className='grid md:grid-cols-3 gap-8'>
                   {[
                     {
                       title: "Quality Products",
@@ -137,15 +128,15 @@ const About = () => {
                       icon: "✨",
                     },
                   ].map((item, index) => (
-                    <Card key={index} className="p-6 text-center bg-[#123f1e]">
-                      <div className="text-3xl mb-4">{item.icon}</div>
-                      <h3 className="font-bold text-xl mb-4">{item.title}</h3>
-                      <p className="text-[#123f1e] mb-4">
-                        We always strive to provide our customers with the grace and gratitude. We provide top notch products as per our customer's requirements with happy faces.
+                    <Card key={index} className='p-6 text-center bg-[#123f1e]'>
+                      <div className='text-3xl mb-4'>{item.icon}</div>
+                      <h3 className='font-bold text-xl mb-4'>{item.title}</h3>
+                      <p className='text-[#123f1e] mb-4'>
+                        We always strive to provide our customers with the grace
+                        and gratitude. We provide top notch products as per our
+                        customer's requirements with happy faces.
                       </p>
-                      <button
-                        className="bg-[#2e7d32] hover:bg-[#123f1e] px-5 py-2.5 rounded-full text-sm text-white"
-                      >
+                      <button className='bg-[#2e7d32] hover:bg-[#123f1e] px-5 py-2.5 rounded-full text-sm text-white'>
                         Read More →
                       </button>
                     </Card>
@@ -155,17 +146,17 @@ const About = () => {
             </section>
 
             {/* Mission Section */}
-            <section className="py-16">
-              <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="space-y-6">
-                    <span className="px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm">
+            <section className='py-16'>
+              <div className='container mx-auto px-4'>
+                <div className='grid md:grid-cols-2 gap-12'>
+                  <div className='space-y-6'>
+                    <span className='px-4 py-2 bg-[#2e7d32] hover:bg-[#123f1e] cursor-pointer text-white rounded-full text-sm'>
                       Our Mission
                     </span>
-                    <h2 className="text-3xl font-bold">
+                    <h2 className='text-3xl font-bold'>
                       Hear what people are saying about our Products.
                     </h2>
-                    <p className="text-black">
+                    <p className='text-black'>
                       As Business Coaches, we not only understand the nuances
                       necessary to navigate the hiring cycle but can help
                       discover the right path to a rewarding career or
@@ -175,27 +166,28 @@ const About = () => {
                       Join Our Coaching →
                     </button> */}
                   </div>
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-bold">
-                      "How we provide quality products for our customers and provide our customers with the best possible experience."
+                  <div className='space-y-6'>
+                    <h3 className='text-2xl font-bold'>
+                      "How we provide quality products for our customers and
+                      provide our customers with the best possible experience."
                     </h3>
-                    <p className="text-black">
+                    <p className='text-black'>
                       Our team of expert coaches understands the nuances
                       necessary to navigate the hiring cycle and can help
                       discover the right path to a rewarding career or
                       assistance in advancing your current position.
                     </p>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#2e7d32]" />
+                    <div className='space-y-4'>
+                      <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 rounded-full bg-[#2e7d32]' />
                         <span>We want to understand you.</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#2e7d32]" />
+                      <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 rounded-full bg-[#2e7d32]' />
                         <span>Positive Thoughts</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#2e7d32]" />
+                      <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 rounded-full bg-[#2e7d32]' />
                         <span>Fast Delivery</span>
                       </div>
                     </div>
@@ -203,12 +195,11 @@ const About = () => {
                 </div>
               </div>
             </section>
-
           </div>
         </Container>
       </Fade>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
