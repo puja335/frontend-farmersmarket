@@ -5,15 +5,15 @@ import {
   Person,
   Settings,
   ShoppingBag,
-} from "@mui/icons-material";
-import { Container, Fade } from "@mui/material";
-import React from "react";
-import { useSelector } from "react-redux";
+} from "@mui/icons-material"
+import { Container, Fade } from "@mui/material"
+import React from "react"
+import { useSelector } from "react-redux"
 
 const Account = () => {
   // Scrolling Bug Fixed
-  window.scroll({ top: 0 });
-  const user = useSelector((state) => state.auth.user);
+  window.scroll({ top: 0 })
+  const user = useSelector((state) => state.auth.user)
 
   const accountSections = [
     {
@@ -52,7 +52,7 @@ const Account = () => {
       description: "Manage notifications and security",
       link: "#settings",
     },
-  ];
+  ]
 
   return (
     <div className='min-h-screen pt-20 pb-10 bg-gray-50'>
@@ -123,14 +123,14 @@ const Account = () => {
         </Container>
       </Fade>
     </div>
-  );
-};
+  )
+}
 
 const ActivityItem = ({ text, time }) => (
   <div className='flex items-center justify-between py-2 border-b border-gray-100'>
     <span className='text-gray-700'>{text}</span>
     <span className='text-sm text-gray-500'>{time}</span>
   </div>
-);
+)
 
-export default Account;
+export default Account
