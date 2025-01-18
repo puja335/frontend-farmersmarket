@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 import {
   Button,
   Checkbox,
@@ -9,13 +9,13 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-} from "@mui/material";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import animation from "../../../assets/login.jpg";
-import { useAuth } from "../../../hooks/useAuth";
+} from "@mui/material"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import animation from "../../../assets/login.jpg"
+import { useAuth } from "../../../hooks/useAuth"
 
 const Register = () => {
   const {
@@ -23,38 +23,38 @@ const Register = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [termsError, setTermsError] = useState(false);
-  const { signup, error, isLoading } = useAuth();
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
+  const [termsError, setTermsError] = useState(false)
+  const { signup, error, isLoading } = useAuth()
+  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
     if (!agreedToTerms) {
-      setTermsError(true);
-      return;
+      setTermsError(true)
+      return
     }
 
     if (data.password !== data.confirmPassword) {
-      toast.error("Passwords don't match");
-      return;
+      toast.error("Passwords don't match")
+      return
     }
 
     try {
-      const response = await signup(data);
+      const response = await signup(data)
       if (response) {
-        toast.success("Registration successful");
-        navigate("/login");
+        toast.success("Registration successful")
+        navigate("/login")
       } else {
-        toast.error(error);
+        toast.error(error)
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
 
   return (
     <section className='min-h-[80vh] px-2 items-center flex justify-center sm:px-6 lg:px-8'>
@@ -173,7 +173,7 @@ const Register = () => {
                         required: "Please confirm your password",
                         validate: (val) => {
                           if (watch("password") !== val) {
-                            return "Passwords do not match";
+                            return "Passwords do not match"
                           }
                         },
                       })}
@@ -214,8 +214,8 @@ const Register = () => {
                         <Checkbox
                           checked={agreedToTerms}
                           onChange={(e) => {
-                            setAgreedToTerms(e.target.checked);
-                            setTermsError(false);
+                            setAgreedToTerms(e.target.checked)
+                            setTermsError(false)
                           }}
                           color='success'
                         />
@@ -275,7 +275,7 @@ const Register = () => {
         </Container>
       </Fade>
     </section>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
