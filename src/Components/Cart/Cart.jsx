@@ -1,31 +1,31 @@
-import { Container } from "@mui/material";
-import { Loader } from "lucide-react";
-import { createContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCart } from "../../features/cart/cartSlice";
-import CartItems from "./CartItems/CartItems";
-import DeliveryForm from "./DeliveryForm/DeliveryForm";
-import EmptyCart from "./EmptyCart/EmptyCart";
-import OrderSummary from "./OrderSummary/OrderSummary";
+import { Container } from "@mui/material"
+import { Loader } from "lucide-react"
+import { createContext, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchCart } from "../../features/cart/cartSlice"
+import CartItems from "./CartItems/CartItems"
+import DeliveryForm from "./DeliveryForm/DeliveryForm"
+import EmptyCart from "./EmptyCart/EmptyCart"
+import OrderSummary from "./OrderSummary/OrderSummary"
 
-export const checkoutContext = createContext();
+export const checkoutContext = createContext()
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  const { items, status } = useSelector((state) => state.cart);
-  const [isProceedToCheckout, setIsProceedToCheckout] = useState(false);
-  console.log(items);
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth.user)
+  const { items, status } = useSelector((state) => state.cart)
+  const [isProceedToCheckout, setIsProceedToCheckout] = useState(false)
+  console.log(items)
 
   useEffect(() => {
-    window.scroll({ top: 0 });
+    window.scroll({ top: 0 })
     if (user?._id) {
-      dispatch(fetchCart(user._id));
+      dispatch(fetchCart(user._id))
     }
-  }, [dispatch, user?._id]);
+  }, [dispatch, user?._id])
 
   if (status === "loading") {
-    return <Loader />;
+    return <Loader />
   }
 
   return (
@@ -53,7 +53,7 @@ const Cart = () => {
         )}
       </section>
     </checkoutContext.Provider>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
