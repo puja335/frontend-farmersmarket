@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 import {
   Box,
   Button,
@@ -9,54 +9,54 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-} from "@mui/material";
-import { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import loginimage from "../../../assets/login.jpg";
-import { useAuth } from "../../../hooks/useAuth";
-import { groceryContext } from "../../Layout/Layout";
+} from "@mui/material"
+import { useContext, useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import loginimage from "../../../assets/login.jpg"
+import { useAuth } from "../../../hooks/useAuth"
+import { groceryContext } from "../../Layout/Layout"
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [logInError, setLogInError] = useState("");
-  const { login, error, isLoading,isAuthenticated } = useAuth();
+  } = useForm()
+  const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false)
+  const [logInError, setLogInError] = useState("")
+  const { login, error, isLoading, isAuthenticated } = useAuth()
 
-  window.scroll({ top: 0 });
+  window.scroll({ top: 0 })
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { from } = location.state || { from: { pathname: "/" } };
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { from } = location.state || { from: { pathname: "/" } }
 
-  const { userLoggedInState } = useContext(groceryContext);
+  const { userLoggedInState } = useContext(groceryContext)
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate("/")
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated])
 
   const onSubmit = async (data) => {
-    const response = await login(data.email, data.password);
+    const response = await login(data.email, data.password)
     if (response) {
       if (rememberMe) {
-        localStorage.setItem("rememberMe", "true");
+        localStorage.setItem("rememberMe", "true")
       }
-      toast.success("Logged in successfully");
-      userLoggedInState[1](true);
-      navigate(from);
+      toast.success("Logged in successfully")
+      userLoggedInState[1](true)
+      navigate(from)
     } else {
-      toast.error(error);
-      setLogInError(error);
+      toast.error(error)
+      setLogInError(error)
     }
-  };
+  }
 
   return (
     <section className='h-[80vh] px-2 items-center flex justify-center sm:px-6 lg:px-8'>
@@ -184,7 +184,7 @@ const Login = () => {
         </Container>
       </Fade>
     </section>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
