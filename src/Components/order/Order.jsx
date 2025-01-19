@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import useAppSelector from "../../hooks/useAppSelector";
-import apiClient from "../../utils/apiClient";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
+import useAppSelector from "../../hooks/useAppSelector"
+import apiClient from "../../utils/apiClient"
 
 // Orders.jsx
 const OrderCard = ({ order }) => (
@@ -22,7 +22,8 @@ const OrderCard = ({ order }) => (
             : "bg-gray-100 text-gray-800"
         }`}
       >
-        {order?.orderStatus?.charAt(0).toUpperCase() + order?.orderStatus?.slice(1)}
+        {order?.orderStatus?.charAt(0).toUpperCase() +
+          order?.orderStatus?.slice(1)}
       </span>
     </div>
 
@@ -52,31 +53,31 @@ const OrderCard = ({ order }) => (
       </div>
     </div>
   </div>
-);
+)
 
 const Orders = () => {
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const user = useAppSelector((state) => state.auth.user);
+  const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true)
+  const user = useAppSelector((state) => state.auth.user)
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await apiClient.get(`/orders`);
+        const response = await apiClient.get(`/orders`)
         if (response.data.success) {
-          setOrders(response.data.data);
+          setOrders(response.data.data)
         }
       } catch (error) {
-        toast.error("Failed to fetch orders");
+        toast.error("Failed to fetch orders")
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
     if (user?._id) {
-      fetchOrders();
+      fetchOrders()
     }
-  }, [user?._id]);
+  }, [user?._id])
 
   if (loading) {
     return (
@@ -95,7 +96,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -115,7 +116,7 @@ const Orders = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Orders;
+export default Orders
