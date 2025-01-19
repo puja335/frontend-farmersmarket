@@ -1,13 +1,13 @@
-import { Fade } from "@mui/material";
-import EnjoyOurFreshGroceryItems from "./EnjoyOurFreshGroceryItems/EnjoyOurFreshGroceryItems";
-import Hero from "./Hero/Hero";
-import OurBestQualities from "./OurBestQualities/OurBestQualities";
-import OurServices from "./OurServices/OurServices";
-import PopularCategories from "./PopularCategories/PopularCategories";
+import { Fade } from "@mui/material"
+import EnjoyOurFreshGroceryItems from "./EnjoyOurFreshGroceryItems/EnjoyOurFreshGroceryItems"
+import Hero from "./Hero/Hero"
+import OurBestQualities from "./OurBestQualities/OurBestQualities"
+import OurServices from "./OurServices/OurServices"
+import PopularCategories from "./PopularCategories/PopularCategories"
 
 const Home = () => {
   // Scrolling Bug Fixed
-  window.scroll({ top: 0 });
+  window.scroll({ top: 0 })
 
   return (
     <Fade in={true}>
@@ -19,7 +19,7 @@ const Home = () => {
         <OurServices />
       </main>
     </Fade>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
