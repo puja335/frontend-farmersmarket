@@ -1,16 +1,16 @@
-import { Container } from "@mui/material";
-import { useContext } from "react";
-import ourQualitiesBg from "../../assets/backgrounds/2_bg.png";
-import qualityMan from "../../assets/landingpage/delivery-guy.png";
-import serviceMan from "../../assets/landingpage/fast-services.png";
-import phone from "../../assets/phone.png";
-import { ourBestQualityContext } from "../Home/OurBestQualities/OurBestQualities";
-import { servicesContext } from "../Home/OurServices/OurServices";
+import { Container } from "@mui/material"
+import { useContext } from "react"
+import ourQualitiesBg from "../../assets/backgrounds/2_bg.png"
+import qualityMan from "../../assets/landingpage/delivery-guy.png"
+import serviceMan from "../../assets/landingpage/fast-services.png"
+import phone from "../../assets/phone.png"
+import { ourBestQualityContext } from "../Home/OurBestQualities/OurBestQualities"
+import { servicesContext } from "../Home/OurServices/OurServices"
 
 const OurServicesAndQualities = ({ children }) => {
   // Get props from context
-  const isOurQuality = useContext(ourBestQualityContext);
-  const isService = useContext(servicesContext);
+  const isOurQuality = useContext(ourBestQualityContext)
+  const isService = useContext(servicesContext)
 
   return (
     <section
@@ -86,7 +86,7 @@ const OurServicesAndQualities = ({ children }) => {
         </div>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default OurServicesAndQualities;
+export default OurServicesAndQualities
