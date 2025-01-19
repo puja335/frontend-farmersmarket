@@ -2,11 +2,10 @@ import {
   AccountCircle,
   Dashboard,
   Logout,
-  Settings,
   ShoppingCartRounded,
-} from "@mui/icons-material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import MenuIcon from "@mui/icons-material/Menu";
+} from "@mui/icons-material"
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp"
+import MenuIcon from "@mui/icons-material/Menu"
 import {
   AppBar,
   Avatar,
@@ -27,26 +26,26 @@ import {
   Toolbar,
   Tooltip,
   useMediaQuery,
-} from "@mui/material";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import logo from "../../assets/farmersmarketlogo.png";
-import { useAuth } from "../../hooks/useAuth";
-import useAppSelector from "../../hooks/useAppSelector";
+} from "@mui/material"
+import useScrollTrigger from "@mui/material/useScrollTrigger"
+import * as React from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import logo from "../../assets/farmersmarketlogo.png"
+import useAppSelector from "../../hooks/useAppSelector"
+import { useAuth } from "../../hooks/useAuth"
 
 function ScrollTop(props) {
-  const { children, window } = props;
+  const { children, window } = props
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
     threshold: 100,
-  });
+  })
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   return (
     <Fade in={trigger}>
@@ -58,20 +57,20 @@ function ScrollTop(props) {
         {children}
       </Box>
     </Fade>
-  );
+  )
 }
 
 function ElevationScroll(props) {
-  const { children, window } = props;
+  const { children, window } = props
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
     target: window ? window() : undefined,
-  });
+  })
 
   return React.cloneElement(children, {
     elevation: trigger ? 4 : 0,
-  });
+  })
 }
 
 const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
@@ -80,7 +79,7 @@ const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
     { id: 2, linkName: "Categories", url: "/categories" },
     { id: 2, linkName: "Products", url: "/products" },
     { id: 3, linkName: "Services", url: "/ourservices" },
-  ];
+  ]
 
   return drawer ? (
     <List sx={{ mt: 1.5 }}>
@@ -110,38 +109,38 @@ const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
         </Link>
       ))}
     </ul>
-  );
-};
+  )
+}
 
 const Navbar = (props) => {
-  const [isNavBarElevated, setIsNavbarElevated] = React.useState(false);
-  const [isOpenDrawer, setIsOpenDrawer] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [isNavBarElevated, setIsNavbarElevated] = React.useState(false)
+  const [isOpenDrawer, setIsOpenDrawer] = React.useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const { user, isAuthenticated, logout } = useAuth();
-  const items = useAppSelector((state) => state.cart.items);
-  console.log("items", items);
-  const navigate = useNavigate();
-  const isSemiMediumScreen = useMediaQuery("(max-width: 900px)");
-  const isLargeScreen = useMediaQuery("(max-width:1280px)");
+  const { user, isAuthenticated, logout } = useAuth()
+  const items = useAppSelector((state) => state.cart.items)
+  console.log("items", items)
+  const navigate = useNavigate()
+  const isSemiMediumScreen = useMediaQuery("(max-width: 900px)")
+  const isLargeScreen = useMediaQuery("(max-width:1280px)")
 
   window.addEventListener("scroll", () => {
-    setIsNavbarElevated(window.scrollY > 0);
-  });
+    setIsNavbarElevated(window.scrollY > 0)
+  })
 
   const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const handleLogout = async () => {
-    await logout();
-    handleClose();
-    toast.success("Logged out successfully");
-  };
+    await logout()
+    handleClose()
+    toast.success("Logged out successfully")
+  }
 
   const renderUserMenu = () => {
     if (isAuthenticated) {
@@ -171,11 +170,11 @@ const Navbar = (props) => {
             <MenuItem
               onClick={() => {
                 if (user.role == "admin") {
-                  navigate("/admin");
+                  navigate("/admin")
                 } else {
-                  navigate("/dashboard");
+                  navigate("/dashboard")
                 }
-                handleClose();
+                handleClose()
               }}
             >
               <Dashboard sx={{ mr: 1 }} fontSize='small' />
@@ -183,8 +182,8 @@ const Navbar = (props) => {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                navigate("/profile");
-                handleClose();
+                navigate("/profile")
+                handleClose()
               }}
             >
               <AccountCircle sx={{ mr: 1 }} fontSize='small' />
@@ -205,7 +204,7 @@ const Navbar = (props) => {
             </MenuItem>
           </Menu>
         </>
-      );
+      )
     }
 
     return (
@@ -218,8 +217,8 @@ const Navbar = (props) => {
       >
         Log in
       </Button>
-    );
-  };
+    )
+  }
 
   return (
     <nav className='fixed z-50'>
@@ -317,7 +316,7 @@ const Navbar = (props) => {
         </Fab>
       </ScrollTop>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
