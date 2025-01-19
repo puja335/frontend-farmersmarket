@@ -1,22 +1,22 @@
-import { AlertCircle, CheckCircle, Clock, Package } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import apiClient from "../../../utils/apiClient";
+import { AlertCircle, CheckCircle, Clock, Package } from "lucide-react"
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { toast } from "react-toastify"
+import apiClient from "../../../utils/apiClient"
 
 const OrderStatus = ({ status }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case "completed":
-        return "bg-green text-green-800";
+        return "bg-green text-green-800"
       case "processing":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-blue-800"
       case "pending":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-yellow-100 text-yellow-800"
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800"
     }
-  };
+  }
 
   return (
     <span
@@ -24,8 +24,8 @@ const OrderStatus = ({ status }) => {
     >
       {status?.charAt(0).toUpperCase() + status?.slice(1)}
     </span>
-  );
-};
+  )
+}
 
 const OrderTracker = ({ currentStatus }) => {
   const steps = [
@@ -33,17 +33,17 @@ const OrderTracker = ({ currentStatus }) => {
     { id: "processing", label: "Processing" },
     { id: "shipped", label: "Shipped" },
     { id: "delivered", label: "Delivered" },
-  ];
+  ]
 
   const getStepStatus = (stepId) => {
-    const statusOrder = ["pending", "processing", "shipped", "delivered"];
-    const currentIndex = statusOrder.indexOf(currentStatus);
-    const stepIndex = statusOrder.indexOf(stepId);
+    const statusOrder = ["pending", "processing", "shipped", "delivered"]
+    const currentIndex = statusOrder.indexOf(currentStatus)
+    const stepIndex = statusOrder.indexOf(stepId)
 
-    if (stepIndex < currentIndex) return "complete";
-    if (stepIndex === currentIndex) return "current";
-    return "upcoming";
-  };
+    if (stepIndex < currentIndex) return "complete"
+    if (stepIndex === currentIndex) return "current"
+    return "upcoming"
+  }
 
   return (
     <div className='py-6'>
@@ -84,37 +84,37 @@ const OrderTracker = ({ currentStatus }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const OrderDetails = () => {
-  const { id } = useParams();
-  const [order, setOrder] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams()
+  const [order, setOrder] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await apiClient.get(`/orders/${id}`);
-        setOrder(response.data.data);
+        const response = await apiClient.get(`/orders/${id}`)
+        setOrder(response.data.data)
       } catch (error) {
-        toast.error("Failed to fetch order details");
+        toast.error("Failed to fetch order details")
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchOrder();
-  }, [id]);
+    fetchOrder()
+  }, [id])
 
-  console.log(order);
+  console.log(order)
 
   if (loading) {
     return (
       <div className='flex justify-center items-center min-h-screen'>
         <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900' />
       </div>
-    );
+    )
   }
 
   if (!order) {
@@ -126,7 +126,7 @@ const OrderDetails = () => {
         </h2>
         <p className='text-gray-600'>Unable to find order details</p>
       </div>
-    );
+    )
   }
 
   return (
@@ -210,7 +210,7 @@ const OrderDetails = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OrderDetails;
+export default OrderDetails
