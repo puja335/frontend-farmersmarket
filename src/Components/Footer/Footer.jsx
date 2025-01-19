@@ -1,23 +1,23 @@
-import { LocationOn, Mail, Phone } from "@mui/icons-material";
-import { Container, useMediaQuery } from "@mui/material";
-import React from "react";
-import Facebook from "../../assets/icons/social_icons/Facebook.png";
-import Instagram from "../../assets/icons/social_icons/Instagram.png";
-import Linkedin from "../../assets/icons/social_icons/Linkedin.png";
-import Twitter from "../../assets/icons/social_icons/Twitter.png";
-import Logo_light from "../../assets/logo2.png";
+import { LocationOn, Mail, Phone } from "@mui/icons-material"
+import { Container, useMediaQuery } from "@mui/material"
+import React from "react"
+import Facebook from "../../assets/icons/social_icons/Facebook.png"
+import Instagram from "../../assets/icons/social_icons/Instagram.png"
+import Linkedin from "../../assets/icons/social_icons/Linkedin.png"
+import Twitter from "../../assets/icons/social_icons/Twitter.png"
+import Logo_light from "../../assets/logo2.png"
 
 // This Class for Sub_Component_Link
 class Link {
   constructor(name, href) {
-    this.name = name;
-    this.href = href;
+    this.name = name
+    this.href = href
   }
 }
 
 const Footer = () => {
   // Media Query
-  const isLargeScreen = useMediaQuery("(min-width:1024px)");
+  const isLargeScreen = useMediaQuery("(min-width:1024px)")
 
   return (
     <footer
@@ -158,8 +158,8 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 // This Sub_Component for footer links
 const Links = ({ title, linksArray }) => (
@@ -182,6 +182,6 @@ const Links = ({ title, linksArray }) => (
       ))}
     </div>
   </div>
-);
+)
 
-export default Footer;
+export default Footer
