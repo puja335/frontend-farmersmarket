@@ -1,13 +1,13 @@
-"use client";
-import { CheckCircle2, Loader2, XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import apiClient from "../../../utils/apiClient";
+"use client"
+import { CheckCircle2, Loader2, XCircle } from "lucide-react"
+import { useEffect, useState } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import apiClient from "../../../utils/apiClient"
 
 const PaymentStatus = () => {
-  const navigate = useNavigate();
-  const [status, setStatus] = useState("verifying");
-  const [searchParams] = useSearchParams(); // Fix: Destructure the array returned by useSearchParams
+  const navigate = useNavigate()
+  const [status, setStatus] = useState("verifying")
+  const [searchParams] = useSearchParams() // Fix: Destructure the array returned by useSearchParams
 
   useEffect(() => {
     const verifyPayment = async () => {
@@ -16,26 +16,26 @@ const PaymentStatus = () => {
           method: "esewa",
           pid: searchParams.get("data"), // Now this will work correctly
           status: "success",
-        });
+        })
 
         if (response.data.success) {
-          setStatus("success");
+          setStatus("success")
           setTimeout(() => {
             navigate(
               `/checkout/confirmation/${response.data.data.payment.orderId}`
-            );
-          }, 2000);
+            )
+          }, 2000)
         } else {
-          setStatus("error");
+          setStatus("error")
         }
       } catch (error) {
-        setStatus("error");
-        console.error("Payment verification failed:", error);
+        setStatus("error")
+        console.error("Payment verification failed:", error)
       }
-    };
+    }
 
-    verifyPayment();
-  }, [navigate, searchParams]);
+    verifyPayment()
+  }, [navigate, searchParams])
 
   return (
     <div className='min-h-screen flex items-center justify-center bg-gray-50'>
@@ -77,7 +77,7 @@ const PaymentStatus = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PaymentStatus;
+export default PaymentStatus
