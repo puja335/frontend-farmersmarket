@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import apiClient from "../../utils/apiClient";
+import { useState } from "react"
+import { useSelector } from "react-redux"
+import { toast } from "react-toastify"
+import apiClient from "../../utils/apiClient"
 
 const PersonalInfo = () => {
-  const user = useSelector((state) => state.auth.user);
-  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.auth.user)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: user?.name || "",
     email: user?.email || "",
@@ -14,41 +14,41 @@ const PersonalInfo = () => {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
-  });
+  })
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
 
     try {
       // If changing password, validate
       if (formData.newPassword) {
         if (formData.newPassword !== formData.confirmPassword) {
-          toast.error("Passwords don't match!");
-          return;
+          toast.error("Passwords don't match!")
+          return
         }
         if (!formData.currentPassword) {
-          toast.error("Current password required!");
-          return;
+          toast.error("Current password required!")
+          return
         }
       }
 
-      const response = await apiClient.put("/user/profile", formData);
+      const response = await apiClient.put("/user/profile", formData)
 
       if (response.data.success) {
-        toast.success("Profile updated successfully!");
+        toast.success("Profile updated successfully!")
         // Update redux state with new user data if needed
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to update profile");
+      toast.error(error.response?.data?.message || "Failed to update profile")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className='min-h-screen pt-20 pb-10 bg-gray-50'>
@@ -171,7 +171,7 @@ const PersonalInfo = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PersonalInfo;
+export default PersonalInfo
