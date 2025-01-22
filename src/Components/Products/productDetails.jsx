@@ -5,81 +5,83 @@ import {
   Plus,
   ShoppingCart,
   Star,
-} from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import apiClient from "../../utils/apiClient";
-import { addToCart } from "../../features/cart/cartSlice";
-import useAppDispatch from "../../hooks/useDispatch";
-import useAppSelector from "../../hooks/useAppSelector";
+} from "lucide-react"
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { addToCart } from "../../features/cart/cartSlice"
+import useAppSelector from "../../hooks/useAppSelector"
+import useAppDispatch from "../../hooks/useDispatch"
+import apiClient from "../../utils/apiClient"
 
 const ProductDetails = () => {
-  const { slug } = useParams();
+  const { slug } = useParams()
 
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const user = useAppSelector(state => state.auth.user);
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const user = useAppSelector((state) => state.auth.user)
 
-  const [product, setProduct] = useState(null);
-  const [currentImage, setCurrentImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
+  const [product, setProduct] = useState(null)
+  const [currentImage, setCurrentImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await apiClient.get(`/product/${slug}`);
-        setProduct(response.data.data);
+        const response = await apiClient.get(`/product/${slug}`)
+        setProduct(response.data.data)
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error("Error fetching product:", error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
-    fetchProduct();
-  }, [slug]);
+    }
+    fetchProduct()
+  }, [slug])
 
   const handleAddToCart = async () => {
     if (!user) {
-      toast.info('Please login to add items to cart');
-      navigate('/login');
-      return;
+      toast.info("Please login to add items to cart")
+      navigate("/login")
+      return
     }
 
     try {
-      await dispatch(addToCart({
-        userId: user._id,
-        productId: product._id,
-        quantity,
-        size: product.unit
-      })).unwrap();
-      
-      toast.success('Added to cart successfully');
+      await dispatch(
+        addToCart({
+          userId: user._id,
+          productId: product._id,
+          quantity,
+          size: product.unit,
+        })
+      ).unwrap()
+
+      toast.success("Added to cart successfully")
     } catch (error) {
-      toast.error(error || 'Failed to add to cart');
+      toast.error(error || "Failed to add to cart")
     }
-  };
+  }
 
   const incrementQuantity = () => {
     if (quantity < product.quantity) {
-      setQuantity(prev => prev + 1);
+      setQuantity((prev) => prev + 1)
     } else {
-      toast.warning('Maximum available quantity reached');
+      toast.warning("Maximum available quantity reached")
     }
-  };
+  }
 
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(prev => prev - 1);
+      setQuantity((prev) => prev - 1)
     }
-  };
+  }
 
   if (isLoading || !product) {
     return (
       <div className='min-h-screen flex items-center justify-center'>
         Loading...
       </div>
-    );
+    )
   }
 
   return (
@@ -184,8 +186,9 @@ const ProductDetails = () => {
                   </button>
                 </div>
                 <button
-                onClick={handleAddToCart}
-                className='flex-1 bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors'>
+                  onClick={handleAddToCart}
+                  className='flex-1 bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors'
+                >
                   <ShoppingCart className='w-5 h-5 inline-block mr-2' />
                   Add to Cart
                 </button>
@@ -216,7 +219,7 @@ const ProductDetails = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductDetails;
+export default ProductDetails
