@@ -1,32 +1,33 @@
-import React from 'react';
-import { Alert, Slide, Snackbar } from "@mui/material";
-import { Check, Done } from "@mui/icons-material";
+import { Alert, Slide, Snackbar } from "@mui/material"
+import React from "react"
 
 const SuccessAlert = ({ massage, state }) => {
-    const [open, setOpen] = state;
+  const [open, setOpen] = state
 
-    // Handle close
-    const handleClose = () => setOpen(!open)
+  // Handle close
+  const handleClose = () => setOpen(!open)
 
-    return (
-        <Snackbar
-            TransitionComponent={SlideTransition}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            open={open}
-            autoHideDuration={6000}
-            onClose={handleClose}>
-            <Alert
-                variant='filled'
-                sx={{ width: '100%' }}
-                onClose={handleClose}
-                severity="success">
-                {massage}
-            </Alert>
-        </Snackbar>
-    );
-};
+  return (
+    <Snackbar
+      TransitionComponent={SlideTransition}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+    >
+      <Alert
+        variant='filled'
+        sx={{ width: "100%" }}
+        onClose={handleClose}
+        severity='success'
+      >
+        {massage}
+      </Alert>
+    </Snackbar>
+  )
+}
 // This sub_component will add a slide animation on snackBar
 function SlideTransition(props) {
-    return <Slide {...props} direction="up" />;
+  return <Slide {...props} direction='up' />
 }
-export default SuccessAlert;
+export default SuccessAlert
