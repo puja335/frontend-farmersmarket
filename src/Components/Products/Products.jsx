@@ -1,60 +1,62 @@
-import { Container, Fade } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ProductCard, { ProductCardSkeleton } from "./ProductCard/ProductCard";
+import { Container, Fade } from "@mui/material"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import ProductCard, { ProductCardSkeleton } from "./ProductCard/ProductCard"
 
-const API_URL = import.meta.env.VITE_REACT_APP_API_URL ? import.meta.env.VITE_REACT_APP_API_URL : "http://localhost:5000/api/v1";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL
+  ? import.meta.env.VITE_REACT_APP_API_URL
+  : "http://localhost:5000/api/v1"
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { categoryName } = useParams();
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const { categoryName } = useParams()
 
   useEffect(() => {
-    window.scroll({ top: 0 });
-    fetchProducts();
-  }, [categoryName]);
+    window.scroll({ top: 0 })
+    fetchProducts()
+  }, [categoryName])
 
   const fetchProducts = async () => {
     try {
-      setIsLoading(true);
-      setError(null);
+      setIsLoading(true)
+      setError(null)
 
       const url = categoryName
         ? `${API_URL}/product?category=${categoryName}`
-        : `${API_URL}/product`;
+        : `${API_URL}/product`
 
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(url)
 
       if (categoryName) {
         const categoryData = data.data.find(
           (group) => group.category.toLowerCase() === categoryName.toLowerCase()
-        );
-        setProducts(categoryData?.items || []);
+        )
+        setProducts(categoryData?.items || [])
       } else {
         // Flatten all items from different categories
         const allProducts = data.data.reduce(
           (acc, group) => [...acc, ...group.items],
           []
-        );
-        setProducts(allProducts);
+        )
+        setProducts(allProducts)
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to fetch products");
-      console.error("Error fetching products:", err);
+      setError(err.response?.data?.message || "Failed to fetch products")
+      console.error("Error fetching products:", err)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   if (error) {
     return (
       <div className='min-h-screen flex items-center justify-center text-red-500'>
         {error}
       </div>
-    );
+    )
   }
 
   return (
@@ -77,7 +79,7 @@ const Products = () => {
         </Container>
       </Fade>
     </main>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products
