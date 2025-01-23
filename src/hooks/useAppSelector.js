@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"
 
-const useAppSelector = useSelector;
-export default useAppSelector;
+const useAppSelector = useSelector
+export default useAppSelector
