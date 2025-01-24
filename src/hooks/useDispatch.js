@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"
 
-const useAppDispatch = useDispatch;
-export default useAppDispatch;
+const useAppDispatch = useDispatch
+export default useAppDispatch
