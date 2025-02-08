@@ -7,60 +7,60 @@ import {
   StepLabel,
   Stepper,
   TextField,
-} from "@mui/material";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { useAuth } from "../../../hooks/useAuth";
+} from "@mui/material"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
+import { useAuth } from "../../../hooks/useAuth"
 
 const ForgotPassword = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [email, setEmail] = useState("");
-  const { sendOTP, verifyOTP, resetPassword } = useAuth();
+  const [activeStep, setActiveStep] = useState(0)
+  const [email, setEmail] = useState("")
+  const { sendOTP, verifyOTP, resetPassword } = useAuth()
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm()
 
-  const steps = ["Enter Email", "Verify OTP", "Reset Password"];
+  const steps = ["Enter Email", "Verify OTP", "Reset Password"]
 
   const handleEmailSubmit = async (data) => {
     try {
-      await sendOTP(data.email);
-      setEmail(data.email);
-      setActiveStep(1);
-      toast.success("OTP sent to your email");
+      await sendOTP(data.email)
+      setEmail(data.email)
+      setActiveStep(1)
+      toast.success("OTP sent to your email")
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
 
   const handleOTPSubmit = async (data) => {
     try {
-      await verifyOTP(email, data.otp);
-      setActiveStep(2);
-      toast.success("OTP verified successfully");
+      await verifyOTP(email, data.otp)
+      setActiveStep(2)
+      toast.success("OTP verified successfully")
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
 
   const handlePasswordReset = async (data) => {
     if (data.newPassword !== data.confirmPassword) {
-      toast.error("Passwords don't match");
-      return;
+      toast.error("Passwords don't match")
+      return
     }
     try {
-      await resetPassword(email, data.newPassword);
-      toast.success("Password reset successfully");
+      await resetPassword(email, data.newPassword)
+      toast.success("Password reset successfully")
       // Redirect to login
-      navigate("/login");
+      navigate("/login")
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
 
   return (
     <section className='min-h-screen px-2 items-center flex justify-center sm:px-6 lg:px-8'>
@@ -161,7 +161,7 @@ const ForgotPassword = () => {
                       required: "Please confirm your password",
                       validate: (val) => {
                         if (watch("newPassword") !== val) {
-                          return "Passwords do not match";
+                          return "Passwords do not match"
                         }
                       },
                     })}
@@ -186,7 +186,7 @@ const ForgotPassword = () => {
         </Container>
       </Fade>
     </section>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword
